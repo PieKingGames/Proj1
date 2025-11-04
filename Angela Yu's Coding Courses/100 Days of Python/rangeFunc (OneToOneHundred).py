@@ -14,6 +14,6 @@ for number in range(1, 11, 3):
 # How could we add up all the numbers from 1 to 100?
 
 total = 0 # To initialize the final sum variable.
-for i in range(1, 101):
-    total += i
+for number in range(1, 101):
+    total += number
 print(total)
