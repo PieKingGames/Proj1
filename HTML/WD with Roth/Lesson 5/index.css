@@ -15,7 +15,8 @@
 
 .spam-tester { /* just for testing scrolling */
     font-family: "Tiny5", sans-serif;
-    font-size: 
+    font-size: 46px;
+    color: #03fc03;
 }
 
 /* Code below is courtesy of ChatGPT with mods by me */
@@ -41,38 +42,72 @@ body {
 
 /* scrolling background lines, to be used with <div class="term-lines"> */
 .term-lines::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh; /* forces full viewport coverage */
     content: "";
-    position: absolute;
-    opacity: 1 !important;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     pointer-events: none;
-    z-index: 0;
+    z-index: 9999;
 
-    --line-thickness: 3px; /* Modded by me to 3px */
+    --line-thickness: 3px;
     --gap: 10px;
-    --line-alpha: 0.15; /* Added by me, adjusting the line opacity */
+    --line-alpha: 0.15;
 
-    /* integer-sized pattern block keeps lines perfectly aligned */
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(255,255,255,var(--line-alpha)) 0,
+            rgba(255,255,255,var(--line-alpha)) var(--line-thickness),
+            transparent var(--line-thickness),
+            transparent 100%
+        );
     background-size: 100% calc(var(--line-thickness) + var(--gap));
-
-    background-image: linear-gradient(
-        to bottom,
-        rgba(255,255,255,var(--line-alpha)) 0,
-        rgba(255,255,255,var(--line-alpha)) var(--line-thickness),
-        transparent var(--line-thickness),
-        transparent 100%
-    );
-
-    background-position: 0 0; /* ensures line starts at the very top */
     background-repeat: repeat;
+
+    box-shadow: inset 0 0 12px rgba(0, 255, 0, 0.20);
+
+    animation:
+        crt-shift 380ms infinite steps(2),
+        crt-flicker 90ms infinite,
+        crt-noise 80ms infinite,
+        crt-glitch 3.5s infinite,
+        crt-burst 2.6s infinite,
+        crt-fray 1.8s infinite;
+}
+
+/* Flicker stays the same */
+@keyframes crt-flicker {
+    0%   { opacity: 0.92; }
+    25%  { opacity: 1; }
+    50%  { opacity: 0.85; }
+    75%  { opacity: 1; }
+    100% { opacity: 0.90; }
+}
+
+/* Noise shake */
+@keyframes crt-noise {
+    0%   { filter: brightness(1) contrast(1); }
+    20%  { filter: brightness(0.96) contrast(1.12); }
+    40%  { filter: brightness(1.08) contrast(0.90); }
+    60%  { filter: brightness(1.03) contrast(1.05); }
+    80%  { filter: brightness(0.98) contrast(1.15); }
+    100% { filter: brightness(1) contrast(1); }
+}
+
+/* Burst: no horizontal transform */
+@keyframes crt-burst {
+    0%, 94%, 100% { opacity: 1; filter: none; }
+    95% {
+        opacity: 1.25;
+        filter: contrast(1.35) brightness(1.15) hue-rotate(8deg);
+    }
+}
+
+@keyframes crt-fray {
+    0%,100% { filter: drop-shadow(0 0 0 #0f0); }
+    50% { filter: drop-shadow(0 0 2px rgba(0,255,0,0.3)); }
 }
 
 /* Code above is courtesy of ChatGPT with mods by me */
