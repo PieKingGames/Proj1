@@ -3,6 +3,40 @@
     padding: 0;     /* Probably nothing good */
 }
 
+.all-rights-reserved { /* for footer text */
+    font-family: "Tiny5", sans-serif;  
+    font-size: 16px;  
+    color: #03fc03; 
+    text-align: center;   
+    padding-bottom: 10px;   
+}
+
+.centeralize { /* for centering text */
+    text-align: center;
+}
+
+/* LINKS BELOW */
+
+a:link { /* for unvisited links */
+  color: #03fc03; 
+  transition: color 0.3s ease; /* some help from ChatGPT */
+}
+
+a:visited {
+  color: #03fc03; /* visited links are also bright green */
+}
+
+a:hover {
+  color: #00b31b; /* I wanted the hover color to be a bit different */
+
+}
+
+a:active {
+  color: #00b31b; /* active links are the same as hover */
+}
+
+/* LINKS ABOVE */
+
 hr {
     border: 3px solid #03fc03;
     margin-top: 20px;
@@ -49,8 +83,7 @@ hr {
     font-size: 32px;
     color: #03fc03;
     padding: 20px;
-    width: 20%;       /* controls box size */
-    margin: 20px auto;
+    display: inline-block;
 }
 
 img { /* I don't think I'll need this but just in case */
