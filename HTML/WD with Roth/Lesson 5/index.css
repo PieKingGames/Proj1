@@ -1,25 +1,75 @@
-* {  /* Whole website */
-    margin: 0;
-    padding: 0;
+* {  /* Whole website - as a base reset */
+    margin: 0;      /* I wonder what happens if I change these values... */
+    padding: 0;     /* Probably nothing good */
 }
 
-.title-tiny5-padded {
-  font-family: "Tiny5", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 56px;
-  text-align: center;
-  color: #03fc03;
-  padding-top: 25px;
+hr {
+    border: 3px solid #03fc03;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 130px;
+    margin-right: 130px;
 }
 
-.spam-tester { /* just for testing scrolling */
+.title-tiny5-padded { /* for index title */
     font-family: "Tiny5", sans-serif;
-    font-size: 46px;
-    color: #03fc03;
+    font-weight: 400;     /* HAAAAHH! WE ARE NORMAL PEOPLE! */
+    font-style: normal;   /* NO ITALICS FOR US! */
+    font-size: 56px;      /* BIGGER TEXT FOR BIGGER IMPACT */
+    text-align: center;   /* CENTER OF ATTENTION */
+    color: #03fc03;    /* BRIGHT GREEN, LIKE A TERMINAL */
+    padding-top: 25px;    /* why am I yelling oh look its a little padding *proceeds to fluff it* there we go */
 }
+
+.subtitle-tiny5-padded {
+    font-family: "Tiny5", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 32px;
+    text-align: center;
+    color: #03fc03;
+    padding-top: 15px;
+}
+
+.h3-substitute-tiny5-padded {
+    font-family: "Tiny5", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 28px;
+    text-align: center;
+    color: #03fc03;
+    padding-top: 10px;
+    line-height: 1.5;
+}
+
+.textbox-green {
+    text-align: center;
+    font-family: "Tiny5", sans-serif;
+    border: 4px solid #03fc03;
+    font-size: 32px;
+    color: #03fc03;
+    padding: 20px;
+    width: 20%;       /* controls box size */
+    margin: 20px auto;
+}
+
+img { /* I don't think I'll need this but just in case */
+    border: 4px solid rgba(3, 252, 3, 0.8);
+    border-radius: 4px;
+}
+
+/* .spam-tester {
+    font-family: "Tiny5", sans-serif;  
+    font-size: 46px;       
+    color: #03fc03; 
+    text-align: center;        
+}
+*/
 
 /* Code below is courtesy of ChatGPT with mods by me */
+
+/* The code in the styles below may be obselete for the website but
+    I'm not sure what parts may still be in use, so I'm leaving it here for now. */
 
 html, body {
     margin: 0;
@@ -28,31 +78,35 @@ html, body {
     background-color: black;
 }
 
-body {
+body {      /* I am legitimatley sure that this does nothing but whatever */
     position: relative;
     min-height: 100vh;
 }
+
+/* The code in the styles above may be obselete for the website but
+    I'm not sure what parts may still be in use, so I'm leaving it here for now. */
 
 .term-lines {
     margin: 0;
     position: relative;
     background: transparent;
+    z-index: 0;
 }
 
 /* scrolling background lines, to be used with <div class="term-lines"> */
 .term-lines::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 9999;
+    top: 0;     /* Huh - how'd I get here? */
+    left: 0;    /* I think I took a wrong turn at Albuquerque */
+    width: 100%;    /* AUGH its a giant wall of text */
+    height: 100vh;  /* Full viewport height - might be buggy - check for termites */
+    pointer-events: none;     /* Oh no we are not listening to you, OS */
+    z-index: 2000;  /* On top of everything else - even the kitchen sink */
 
-    --line-thickness: 3px;
-    --gap: 10px;
-    --line-alpha: 0.15;
+    --line-thickness: 3px; /* Changed from 1px to 3px by me for better visibility */
+    --gap: 10px; /* Kinda works, maybe I'll tweak later */
+    --line-alpha: 0.15; /* Changed from 1 to 0.15 by me for less intense lines */
 
     background-image:
         linear-gradient(
@@ -65,7 +119,7 @@ body {
     background-size: 100% calc(var(--line-thickness) + var(--gap));
     background-repeat: repeat;
 
-    box-shadow: inset 0 0 12px rgba(0, 255, 0, 0.20);
+    box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.35);
 
     animation:
         crt-shift 380ms infinite steps(2),
@@ -76,7 +130,6 @@ body {
         crt-fray 1.8s infinite;
 }
 
-/* Flicker stays the same */
 @keyframes crt-flicker {
     0%   { opacity: 0.92; }
     25%  { opacity: 1; }
@@ -95,7 +148,6 @@ body {
     100% { filter: brightness(1) contrast(1); }
 }
 
-/* Burst: no horizontal transform */
 @keyframes crt-burst {
     0%, 94%, 100% { opacity: 1; filter: none; }
     95% {
